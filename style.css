@@ -3,7 +3,6 @@ body {
     margin: 0px auto;
     font-family: Arial, Helvetica, sans-serif;
     color:#666;
-
 }
 p {
     margin-top:20px;
@@ -129,3 +128,28 @@ aside>header h1 {
     color: #000;
 }
 
+#container {
+    width:700px;
+    padding:10px;
+    float: right;
+}
+
+
+.yui-panel .bd {
+    overflow:auto;
+    background-color:fff;
+    padding:10px;
+}
+
+.yui-panel .ft {
+    height:15px;
+    padding:0;
+}
+
+.yui-panel .yui-resize-handle-br {
+    right:0;
+    bottom:0;
+    height: 8px;
+    width: 8px;
+    position:absolute; 
+}
