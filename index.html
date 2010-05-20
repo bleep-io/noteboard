@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Noteboard</title>
+        <link rel="stylesheet" href="http://reset5.googlecode.com/hg/reset.css" type="text/css" />
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <script src="http://yui.yahooapis.com/2.8.1/build/yuiloader/yuiloader-min.js"></script>
+        <!--[if lt IE 9]>
+            <script src="html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header>
+            <hgroup>
+                <h1>Page Header</h1>
+                <h2>Page Sub Heading</h2>
+            </hgroup>
+        </header>
+        <!--<nav>
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Projects</a>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Profile</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>-->
+        <div>
+            
+        </div>
+        <aside>
+            <header>
+                <h1>Siderbar Heading</h1>
+            </header>
+            <p>
+                Ut sapien enim, porttitor id feugiat non, ultrices non odio.
+            </p>
+        </aside>
+    </body>
+    <script>
+        var loader = new YAHOO.util.YUILoader({
+            require: ['calendar'],
+            //base: '../../build/',
+            loadOptional: true,
+            onSuccess: function(){
+                YAHOO.util.Event.onAvailable("calendar_container", function(){
+                    var myCal = new YAHOO.widget.Calendar("mycal_id", "calendar_container");
+                    myCal.render();
+                })
+            },
+            onFailure: function(o){
+                alert("error: " + YAHOO.lang.dump(o));
+            }
+        });
+        loader.insert();
+    </script>
+    </html>
