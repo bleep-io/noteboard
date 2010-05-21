@@ -8,36 +8,21 @@
         <script src="http://yui.yahooapis.com/2.8.1/build/yuiloader/yuiloader-min.js" type="text/javascript"></script>
         <script src="main.js" type="text/javascript"></script>
     </head>
-    <body class="yui-skin-sam">
+    <body scroll="no" class="yui-skin-sam">
         <header>
             <hgroup>
                 <h1>NOTEBOARD</h1>
                 <h2>Tablica na notatki</h2>
             </hgroup>
         </header>
-        <!--<nav>
-        <ul>
-        <li>
-        <a href="#">Home</a>
-        </li>
-        <li>
-        <a href="#">Projects</a>
-        </li>
-        <li>
-        <a href="#">Portfolio</a>
-        </li>
-        <li>
-        <a href="#">Profile</a>
-        </li>
-        <li>
-        <a href="#">Contact</a>
-        </li>
-        </ul>
-        </nav>-->
-        <div id="container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" onclick="add_note();">Dodaj notatkę</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="container" class="yui-module">
         </div>
-        <aside>
-            <a href="#" onclick="add_note();">Dodaj notatkę</a>
-        </aside>
-    </body>
+	</body>
 </html>

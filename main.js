@@ -1,26 +1,63 @@
-// Instantiate and configure YUI Loader: 
 (function(){
     var loader = new YAHOO.util.YUILoader({
         base: "",
-        require: ["container", "containercore", "resize"],
+        require: ["container", "containercore", "resize", "dragdrop"],
         loadOptional: true,
         combine: true,
         filter: "MIN",
         allowRollup: true,
         onSuccess: function(){
-            YAHOO.util.Config.configChangedEvent.subscribe(function(){});
+            init();
         }
     });
     loader.insert();
 })();
 
 var note_panels = [];
-var overlay_manager = new YAHOO.widget.OverlayManager();
+var DDRegion = null;
+
+function init()
+{
+    var Dom = YAHOO.util.Dom,
+        Event = YAHOO.util.Event;
+
+    DDRegion = function(id, sGroup, config) {
+        this.cont = config.cont;
+        DDRegion.superclass.constructor.apply(this, arguments);
+    };
+
+    YAHOO.extend(DDRegion, YAHOO.util.DD, {
+        cont: null,
+        init: function() {
+            DDRegion.superclass.init.apply(this, arguments);
+            this.initConstraints();
+            this.scroll = false;
+
+            Event.on(window, 'resize', function() {
+                this.initConstraints();
+            }, this, true);
+        },
+        initConstraints: function() {
+            var region = Dom.getRegion(this.cont);
+            var el = this.getEl();
+            var xy = Dom.getXY(el);
+            var width = parseInt(Dom.getStyle(el, 'width'), 10);
+            var height = parseInt(Dom.getStyle(el, 'height'), 10);
+            var left = xy[0] - region.left;
+            var right = region.right - xy[0] - width;
+            var top = xy[1] - region.top;
+            var bottom = region.bottom - xy[1] - height;
+            this.setXConstraint(left, right);
+            this.setYConstraint(top, bottom);
+        }
+    });
+}
 
 function add_note(){
     var panel_id = "panel" + note_panels.length;
     var panel = new YAHOO.widget.Panel(panel_id, {
-        width: "320px",
+        width: '250px',
+        height: '200px',
         draggable: true,
         close: true,
         autofillheight: "body",
@@ -38,15 +75,17 @@ function add_note(){
         note_panels.splice(i, 1);
         panel.destroy();
         }); 
-    panel.setHeader("panel");
-    panel.setBody('<section contenteditable="true">This is a dynamically generated Panel.<br/><br/><br/>Bleeee</section>');
-    panel.render("container");
-    overlay_manager.register(panel);
+    //panel.setHeader('<section contenteditable="true">panel</section>');
+    panel.setBody('<div id="' + panel_id + '_note_body" style="height:100%;" contenteditable="true">nowa notatka</div>');
+    panel.render('container');
+    
+    var dd = new DDRegion(panel_id + '_c', '', { cont: 'container' });
+    dd.setHandleElId(panel_id + '_h');
     
     var resize = new YAHOO.util.Resize(panel_id, {
         handles: ['br'],
         autoRatio: false,
-        minWidth: 300,
+        minWidth: 100,
         minHeight: 100,
         status: false
     });
@@ -72,3 +111,4 @@ function add_note(){
         }
     }, panel, true);
 }
+
