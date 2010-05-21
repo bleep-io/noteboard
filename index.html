@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style.css" type="text/css" />
         <script src="http://yui.yahooapis.com/2.8.1/build/yuiloader/yuiloader-min.js" type="text/javascript"></script>
         <script src="main.js" type="text/javascript"></script>
+        <script src="state_persist.js" type="text/javascript"></script>
     </head>
     <body scroll="no" class="yui-skin-sam">
         <header>
@@ -19,6 +20,15 @@
             <ul>
                 <li>
                     <a href="#" onclick="add_note();">Dodaj notatkę</a>
+                </li>
+                <li>
+                    <a href="#" onclick="save_board_state();">Zapisz</a>
+                </li>
+                <li>
+                    <a href="#" onclick="load_board_state();">Wczytaj</a>
+                </li>
+                <li>
+                    <a href="#" onclick="clear_board_state();">Wyczyść</a>
                 </li>
             </ul>
         </nav>

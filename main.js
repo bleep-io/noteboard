@@ -1,3 +1,6 @@
+var note_panels = [];
+var DDRegion = null;
+
 (function(){
     var loader = new YAHOO.util.YUILoader({
         base: "",
@@ -12,9 +15,6 @@
     });
     loader.insert();
 })();
-
-var note_panels = [];
-var DDRegion = null;
 
 function init()
 {
@@ -53,17 +53,23 @@ function init()
     });
 }
 
-function add_note(){
-    var panel_id = "panel" + note_panels.length;
-    var panel = new YAHOO.widget.Panel(panel_id, {
-        width: '250px',
-        height: '200px',
-        draggable: true,
-        close: true,
-        autofillheight: "body",
-        constraintoviewport: true,
-    });
-    
+function add_note(p){
+    if (p) {
+        var panel_id = p.id;
+        var panel = p;
+    }
+    else {
+        var panel_id = "panel" + note_panels.length;
+        var panel = new YAHOO.widget.Panel(panel_id, {
+            width: '250px',
+            height: '200px',
+            draggable: true,
+            close: true,
+            autofillheight: "body",
+            constraintoviewport: true,
+        });
+        panel.setBody('<div id="' + panel_id + '_note_body" style="height:100%;" contenteditable="true">nowa notatka</div>');
+    }
     note_panels.push(panel);
     
     panel.hideEvent.subscribe(function(args){
@@ -75,8 +81,6 @@ function add_note(){
         note_panels.splice(i, 1);
         panel.destroy();
         }); 
-    //panel.setHeader('<section contenteditable="true">panel</section>');
-    panel.setBody('<div id="' + panel_id + '_note_body" style="height:100%;" contenteditable="true">nowa notatka</div>');
     panel.render('container');
     
     var dd = new DDRegion(panel_id + '_c', '', { cont: 'container' });
@@ -95,7 +99,6 @@ function add_note(){
     }, panel, true);
     
     resize.on('startResize', function(args){
-    
         if (this.cfg.getProperty("constraintoviewport")) {
             var D = YAHOO.util.Dom;
             
@@ -110,5 +113,40 @@ function add_note(){
             resize.set("maxHeight", null);
         }
     }, panel, true);
+}
+
+function load_board_state()
+{
+    if (localStorage.getItem('panels_persist'))
+    {
+        var panels_persist = JSON.parse(localStorage.getItem('panels_persist'));
+        for(var i in panels_persist)
+        {
+            var panel = panel_from_state(panels_persist[i]);
+            add_note(panel);
+        }
+    }
+    
+    /*if (localStorage.getItem('container'))
+    {
+        document.getElementById('container').innerHTML = localStorage.getItem('container');
+    }*/
+}
+
+function save_board_state()
+{
+    //localStorage.setItem('container', document.getElementById('container').innerHTML);
+    
+    var panels_persist = [];
+    for(var i in note_panels)
+    {
+        panels_persist.push(new PanelState(note_panels[i]));
+    }
+    localStorage.setItem('panels_persist', JSON.stringify(panels_persist));
+}
+
+function clear_board_state()
+{
+    localStorage.clear();
 }
 
