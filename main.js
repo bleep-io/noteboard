@@ -114,39 +114,3 @@ function add_note(p){
         }
     }, panel, true);
 }
-
-function load_board_state()
-{
-    if (localStorage.getItem('panels_persist'))
-    {
-        var panels_persist = JSON.parse(localStorage.getItem('panels_persist'));
-        for(var i in panels_persist)
-        {
-            var panel = panel_from_state(panels_persist[i]);
-            add_note(panel);
-        }
-    }
-    
-    /*if (localStorage.getItem('container'))
-    {
-        document.getElementById('container').innerHTML = localStorage.getItem('container');
-    }*/
-}
-
-function save_board_state()
-{
-    //localStorage.setItem('container', document.getElementById('container').innerHTML);
-    
-    var panels_persist = [];
-    for(var i in note_panels)
-    {
-        panels_persist.push(new PanelState(note_panels[i]));
-    }
-    localStorage.setItem('panels_persist', JSON.stringify(panels_persist));
-}
-
-function clear_board_state()
-{
-    localStorage.clear();
-}
-
