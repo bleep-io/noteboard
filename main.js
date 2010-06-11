@@ -1,5 +1,6 @@
 var note_panels = [];
 var DDRegion = null;
+var help_panel = null;
 
 (function(){
     var loader = new YAHOO.util.YUILoader({
@@ -51,6 +52,22 @@ function init()
             this.setYConstraint(top, bottom);
         }
     });
+    
+    help_panel = new YAHOO.widget.Panel('help_panel', {
+            width: '400px',
+            height: '300px',
+            fixedcenter:true,
+            zindex: 4, 
+            modal: true,
+            draggable: false,
+            close: true,
+            autofillheight: "body",
+            visible: false
+        });
+    help_panel.setBody(help_text);
+    help_panel.render(document.body);
+    
+    load_board_state();
 }
 
 function add_note(p){
@@ -113,4 +130,27 @@ function add_note(p){
             resize.set("maxHeight", null);
         }
     }, panel, true);
+    
+    document.getElementById('save_btn').style.visibility = 'visible';
 }
+
+function reset_board()
+{
+    for (var i in note_panels)
+    {
+        note_panels[i].destroy();
+    }
+    note_panels = [];
+}
+
+
+function show_help()
+{
+    help_panel.show();
+}
+
+var help_text = '<h1>Noteboard - co to jest?</h1>\
+<p>Jest to działająca w przeglądarce tablica na notatki. Można jej używać na przykład zamiast \
+żółtych karteczek porozklejanych na monitorze lub programów, które trzeba instalować.</p>\
+<p>Notatki można przeciągać i zmieniać ich rozmiar. Żeby zapamiętać stan tablicy trzeba wcisnąć "Zapisz". \
+Zapisana tablica zostanie odtworzona nawet po wyłączeniu przeglądarki czy komputera.</p>'

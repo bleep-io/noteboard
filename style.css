@@ -29,6 +29,11 @@ body>header hgroup h2 {
     color: #fff;
     font-style:italic;
 }
+body>header hgroup a {
+    font-size: 0.8em;
+    color: #fff;
+    font-style:italic;
+}
 nav {
     height:25px;
     padding:10px;
@@ -64,11 +69,18 @@ nav ul li a:hover {
     background-image: url(board.jpg);
     background-repeat: repeat;
 }
-.yui-panel .bd {
+
+#container .yui-panel .bd {
     overflow:auto;
-    background-color:fff;
     padding:10px;
+    color:#000000;
+    background-color:#ffff98;
 }
+
+#container .yui-panel .hd {
+    font-size:72%;
+}
+
 .yui-panel .ft {
     height:15px;
     padding:0;

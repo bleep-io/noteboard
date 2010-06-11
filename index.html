@@ -14,6 +14,9 @@
             <hgroup>
                 <h1>NOTEBOARD</h1>
                 <h2>Tablica na notatki</h2>
+                <div style="text-align: right;">
+                    <a href="#" onclick="show_help();">O co tu chodzi?</a>
+                </div>
             </hgroup>
         </header>
         <nav>
@@ -21,13 +24,13 @@
                 <li>
                     <a href="#" onclick="add_note();">Dodaj notatkę</a>
                 </li>
-                <li>
+                <li id="save_btn" style="visibility: collapse;">
                     <a href="#" onclick="save_board_state();">Zapisz</a>
                 </li>
-                <li>
+                <li id="load_btn" style="visibility: collapse;">
                     <a href="#" onclick="load_board_state();">Wczytaj</a>
                 </li>
-                <li>
+                <li id="clear_btn" style="visibility: collapse;">
                     <a href="#" onclick="clear_board_state();">Wyczyść</a>
                 </li>
             </ul>

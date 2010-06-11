@@ -28,12 +28,16 @@ function load_board_state()
 {
     if (localStorage.getItem('panels_persist'))
     {
+        reset_board();
         var panels_persist = JSON.parse(localStorage.getItem('panels_persist'));
         for(var i in panels_persist)
         {
             var panel = panel_from_state(panels_persist[i]);
             add_note(panel);
         }
+        document.getElementById('save_btn').style.visibility = 'visible';
+        document.getElementById('load_btn').style.visibility = 'visible';
+        document.getElementById('clear_btn').style.visibility = 'visible';
     }
 }
 
@@ -45,10 +49,17 @@ function save_board_state()
         panels_persist.push(new PanelState(note_panels[i]));
     }
     localStorage.setItem('panels_persist', JSON.stringify(panels_persist));
+    
+    document.getElementById('load_btn').style.visibility = 'visible';
+    document.getElementById('clear_btn').style.visibility = 'visible';
 }
 
 function clear_board_state()
 {
+    reset_board();
     localStorage.clear();
+    document.getElementById('save_btn').style.visibility = 'collapse';
+    document.getElementById('load_btn').style.visibility = 'collapse';
+    document.getElementById('clear_btn').style.visibility = 'collapse';
 }
 
