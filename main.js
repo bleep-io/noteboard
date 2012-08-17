@@ -149,8 +149,7 @@ function show_help()
     help_panel.show();
 }
 
-var help_text = '<h1>Noteboard - co to jest?</h1>\
-<p>Jest to działająca w przeglądarce tablica na notatki. Można jej używać na przykład zamiast \
-żółtych karteczek porozklejanych na monitorze lub programów, które trzeba instalować.</p>\
-<p>Notatki można przeciągać i zmieniać ich rozmiar. Żeby zapamiętać stan tablicy trzeba wcisnąć "Zapisz". \
-Zapisana tablica zostanie odtworzona nawet po wyłączeniu przeglądarki czy komputera.</p>'
+var help_text = '<h1>Noteboard - what is it?</h1>\
+<p>It is running in the browser on the memo board. It can be used, for example, instead of sticky notes on your monitor porozklejanych or programs that need to be installed.
+
+ Notes You can drag and resize them. To save the state of the table you press "Save". Saved plaque will be played even when the browser or computer.</p>'
