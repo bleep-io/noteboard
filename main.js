@@ -85,7 +85,7 @@ function add_note(p){
             autofillheight: "body",
             constraintoviewport: true,
         });
-        panel.setBody('<div id="' + panel_id + '_note_body" style="height:100%;" contenteditable="true">nowa notatka</div>');
+        panel.setBody('<div id="' + panel_id + '_note_body" style="height:100%;" contenteditable="true">new note</div>');
     }
     note_panels.push(panel);
     
@@ -150,6 +150,5 @@ function show_help()
 }
 
 var help_text = '<h1>Noteboard - what is it?</h1>\
-<p>It is running in the browser on the memo board. It can be used, for example, instead of sticky notes on your monitor porozklejanych or programs that need to be installed.\
-
- Notes You can drag and resize them. To save the state of the table you press "Save". Saved plaque will be played even when the browser or computer.</p>'
+<p>This application runs in your browser and replicates post-it notes. It can be used, for example, instead of sticky notes on your monitor or programs that need to be installed.\
+You can drag and resize them. To save the state of the table you press "Save". Saved notes will be displayed even when the browser is closed.</p>'
