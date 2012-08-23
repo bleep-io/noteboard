@@ -31,7 +31,9 @@
                     <a href="#" onclick="load_board_state();">Load</a>
                 </li>
                 <li id="clear_btn" style="visibility: collapse;">
-                    <a href="#" onclick="clear_board_state();">Clear</a>
+                    <a href="#" onclick="if(confirm('Delete All Notes?'))
+					clear_board_state();
+					else null;">Clear Notes</a>
                 </li>
             </ul>
         </nav>
