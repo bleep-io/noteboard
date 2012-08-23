@@ -18,7 +18,7 @@ function panel_from_state(state)
         draggable: true,
         close: true,
         autofillheight: "body",
-        constraintoviewport: true,
+        constraintoviewport: true
     });
     panel.setBody(state.body);
     return panel;
