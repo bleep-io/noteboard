@@ -83,7 +83,7 @@ function add_note(p){
             draggable: true,
             close: true,
             autofillheight: "body",
-            constraintoviewport: true,
+            constraintoviewport: true
         });
         panel.setBody('<div id="' + panel_id + '_note_body" style="height:100%;" contenteditable="true">new note</div>');
     }
