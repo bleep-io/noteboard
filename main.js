@@ -84,6 +84,7 @@ function add_note(p){
             close: true,
             autofillheight: "body",
             constraintoviewport: true,
+	    effect:{effect:YAHOO.widget.ContainerEffect.SLIDE, duration: 0.5}
         });
         panel.setBody('<div id="' + panel_id + '_note_body" style="height:100%;" contenteditable="true">new note</div>');
     }
