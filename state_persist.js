@@ -19,6 +19,7 @@ function panel_from_state(state)
         close: true,
         autofillheight: "body",
         constraintoviewport: true,
+        effect:{effect:YAHOO.widget.ContainerEffect.SLIDE, duration: 0.2}
     });
     panel.setBody(state.body);
     return panel;
