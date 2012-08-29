@@ -53,6 +53,8 @@ function save_board_state()
     
     document.getElementById('load_btn').style.visibility = 'visible';
     document.getElementById('clear_btn').style.visibility = 'visible';
+	alert ("Saved");
+
 }
 
 function clear_board_state()
