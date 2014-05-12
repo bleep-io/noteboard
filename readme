@@ -4,4 +4,4 @@ A virtual noteboard using yui container panels:
 
 http://developer.yahoo.com/yui/container/panel/
 
-Notes are saved using localStorage and persist even when the browser window is closed.
+Notes are saved using JSON on Server Side
