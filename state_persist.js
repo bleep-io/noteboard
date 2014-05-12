@@ -27,11 +27,13 @@ function panel_from_state(state)
 
 function load_board_state()
 {
-    if (localStorage.getItem('panels_persist'))
-    {
+
         reset_board();
-        var panels_persist = JSON.parse(localStorage.getItem('panels_persist'));
-        for(var i in panels_persist)
+        $.getJSON('loaddata.php', function(response) {
+            var panels_persist = response;
+
+        //var panels_persist = JSON.parse(localStorage.getItem('panels_persist'));
+                for(var i in panels_persist)
         {
             var panel = panel_from_state(panels_persist[i]);
             add_note(panel);
@@ -39,7 +41,8 @@ function load_board_state()
         document.getElementById('save_btn').style.visibility = 'visible';
         document.getElementById('load_btn').style.visibility = 'visible';
         document.getElementById('clear_btn').style.visibility = 'visible';
-    }
+        }); 
+    
 }
 
 function save_board_state()
@@ -49,11 +52,13 @@ function save_board_state()
     {
         panels_persist.push(new PanelState(note_panels[i]));
     }
-    localStorage.setItem('panels_persist', JSON.stringify(panels_persist));
-    
+ //   localStorage.setItem('panels_persist', JSON.stringify(panels_persist));
+
+    var x = JSON.stringify(panels_persist);
+    $.post("savedata.php", {data : x}, function(){alert("Saved")});
+
     document.getElementById('load_btn').style.visibility = 'visible';
     document.getElementById('clear_btn').style.visibility = 'visible';
-	alert ("Saved");
 
 }
 

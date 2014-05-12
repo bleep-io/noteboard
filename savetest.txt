@@ -1,0 +1,1 @@
+[{"id":"panel0","x":382,"y":408,"width":"260px","height":"210px","body":"<div id=\"panel0_note_body\" style=\"height:100%;\" contenteditable=\"true\">This note is saved to JSON.</div>"},{"id":"panel1","x":647,"y":280,"width":"252px","height":"202px","body":"<div id=\"panel1_note_body\" style=\"height:100%;\" contenteditable=\"true\">This is another note saved to JSON.</div>"}]
